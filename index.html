@@ -14,28 +14,12 @@
       overflow: hidden;
     }
 
-    /* Effetto glitch sfondo */
-    body::before {
-      content: "";
+    /* Canvas Matrix */
+    canvas {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 255, 0, 0.05) 0px,
-        rgba(0, 255, 0, 0.05) 2px,
-        transparent 2px,
-        transparent 4px
-      );
-      animation: glitchMove 1s infinite linear;
-      pointer-events: none;
       z-index: 0;
-    }
-
-    @keyframes glitchMove {
-      0% { transform: translateY(0); }
-      50% { transform: translateY(2px); }
-      100% { transform: translateY(0); }
     }
 
     header {
@@ -95,6 +79,9 @@
 </head>
 <body>
 
+  <!-- Sfondo Matrix -->
+  <canvas id="matrix"></canvas>
+
   <header>
     <img src="logo.png" alt="Hoodboy Logo">
     <h1>H8db0y</h1>
@@ -111,9 +98,48 @@
     © 2025 H8db0y
   </footer>
 
+  <!-- Script effetto Matrix -->
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const binary = "01";
+    const font_size = 14;
+    const columns = canvas.width / font_size;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) drops[x] = 1;
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0f0";
+      ctx.font = font_size + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = binary[Math.floor(Math.random() * binary.length)];
+        ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
+          drops[i] = 0;
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw, 35);
+
+    // Resize adattivo
+    window.addEventListener("resize", () => {
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+    });
+  </script>
 </body>
 </html>
-
-
 
 
