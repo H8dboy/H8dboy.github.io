@@ -61,6 +61,29 @@
   </style>
 </head>
 <body>
+/* Effetto glitch sfondo */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 0, 0.05) 0px,
+    rgba(0, 255, 0, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  animation: glitchMove 1s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes glitchMove {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
 
   <header>
     <!-- Qui metti il tuo logo -->
@@ -81,5 +104,6 @@
 
 </body>
 </html>
+
 
 
