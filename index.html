@@ -14,7 +14,7 @@
       overflow: hidden;
     }
 
-    /* Canvas Matrix */
+    /* Sfondo Matrix */
     canvas {
       position: fixed;
       top: 0; left: 0;
@@ -43,7 +43,10 @@
     }
 
     .btn {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
       margin: 20px auto;
       padding: 15px;
       width: 80%;
@@ -67,6 +70,12 @@
       box-shadow: 0 0 25px #0f0;
     }
 
+    .icon {
+      width: 20px;
+      height: 20px;
+      filter: invert(69%) sepia(92%) saturate(649%) hue-rotate(66deg) brightness(92%) contrast(92%);
+    }
+
     footer {
       margin-top: 50px;
       font-size: 0.8rem;
@@ -88,17 +97,25 @@
   </header>
 
   <main>
-    <a class="btn" href="https://www.instagram.com/h8db0y" target="_blank">Instagram</a>
-    <a class="btn" href="https://www.youtube.com/@H8dboy" target="_blank">YouTube</a>
-    <a class="btn" href="https://open.spotify.com/intl-it/artist/7acUec3JMGpPiOixBEke9o?si=vop0dgVHT9inYQJ0tAkxLQ" target="_blank">Spotify</a>
-    <a class="btn" href="https://signal.me/#eu/kpklu39AsMxQ-JVbUvTrmZwADPFqrLsGoD3sxSxy2QRVLAsQjUtIjKCqcGo29mtL" target="_blank">Signal</a>
+    <a class="btn" href="https://www.instagram.com/h8db0y" target="_blank">
+      <img src="instagram.svg" alt="Instagram" class="icon"> Instagram
+    </a>
+    <a class="btn" href="https://www.youtube.com/@H8dboy" target="_blank">
+      <img src="youtube.svg" alt="YouTube" class="icon"> YouTube
+    </a>
+    <a class="btn" href="https://open.spotify.com/intl-it/artist/7acUec3JMGpPiOixBEke9o?si=vop0dgVHT9inYQJ0tAkxLQ" target="_blank">
+      <img src="spotify.svg" alt="Spotify" class="icon"> Spotify
+    </a>
+    <a class="btn" href="https://signal.me/#eu/kpklu39AsMxQ-JVbUvTrmZwADPFqrLsGoD3sxSxy2QRVLAsQjUtIjKCqcGo29mtL" target="_blank">
+      <img src="signal.svg" alt="Signal" class="icon"> Signal
+    </a>
   </main>
 
   <footer>
     © 2025 H8db0y
   </footer>
 
-  <!-- Script effetto Matrix -->
+  <!-- Script Matrix -->
   <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
@@ -133,7 +150,6 @@
 
     setInterval(draw, 35);
 
-    // Resize adattivo
     window.addEventListener("resize", () => {
       canvas.height = window.innerHeight;
       canvas.width = window.innerWidth;
@@ -141,5 +157,4 @@
   </script>
 </body>
 </html>
-
 
