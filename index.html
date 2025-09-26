@@ -74,6 +74,13 @@
       width: 20px;
       height: 20px;
       filter: invert(69%) sepia(92%) saturate(649%) hue-rotate(66deg) brightness(92%) contrast(92%);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    /* Animazione icona al passaggio */
+    .btn:hover .icon {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 6px #0f0);
     }
 
     footer {
@@ -157,4 +164,3 @@
   </script>
 </body>
 </html>
-
