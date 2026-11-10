@@ -3,201 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H8db0y Links</title>
+  <meta name="theme-color" content="#070B08">
+  <title>H8db0y // links</title>
   <style>
+    :root { --g: #2EE87A; --bg: #070B08; --mag: #ff00c8; --cy: #00e5ff; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #000;
-      color: #2EE87A;
+      min-height: 100vh;
+      font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, "Courier New", monospace;
+      background: var(--bg);
+      color: var(--g);
       text-align: center;
       overflow-x: hidden;
     }
 
-    /* Sfondo Matrix */
-    canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 0;
-    }
+    /* Pioggia Matrix sullo sfondo */
+    canvas { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: .38; }
 
-    header {
-      margin-top: 50px;
-      position: relative;
-      z-index: 1;
-    }
+    /* Scanline + vignetta da monitor CRT */
+    body::before, body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 3; }
+    body::before { background: repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.28) 2px 3px); }
+    body::after { background: radial-gradient(ellipse at center, rgba(0,0,0,0) 45%, rgba(0,0,0,.75) 100%); }
 
-    header img {
-      width: 150px;
-      filter: drop-shadow(0 0 15px #2EE87A);
-    }
+    header, main, footer { position: relative; z-index: 1; }
+    header { padding-top: 34px; }
+    header img { width: 124px; height: 124px; filter: drop-shadow(0 0 15px var(--g)); animation: glitch-logo 3.5s infinite steps(1); }
 
     h1 {
-      color: #2EE87A;
-      text-shadow: 0 0 20px #2EE87A;
-      margin-top: 20px;
+      margin: 10px 0 0;
       font-size: 2rem;
-      position: relative;
-      z-index: 1;
+      letter-spacing: .12em;
+      text-shadow: 0 0 20px var(--g);
+      animation: glitch-text 3.5s infinite steps(1);
     }
 
+    .tag { margin: 8px 0 22px; font-size: .78rem; letter-spacing: .08em; opacity: .85; min-height: 1.2em; }
+    .tag::before { content: "> "; opacity: .6; }
+    .cur { display: inline-block; width: .6em; height: 1em; margin-left: 2px; background: var(--g); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    main { width: 86%; max-width: 340px; margin: 0 auto; filter: drop-shadow(0 0 7px rgba(46,232,122,.55)); }
+
+    /* Pulsanti con angoli tagliati */
     .btn {
+      --cut: 13px;
+      display: block;
+      margin: 0 0 13px;
+      padding: 1.5px;
+      background: var(--g);
+      color: var(--g);
+      text-decoration: none;
+      clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+    }
+    .btn .in {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin: 20px auto;
-      padding: 15px;
-      width: 80%;
-      max-width: 300px;
-      background: #000;
-      border: 2px solid #2EE87A;
-      color: #2EE87A;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 50px;
+      gap: 12px;
+      padding: 13px 16px;
+      background: var(--bg);
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      box-shadow: 0 0 15px #2EE87A;
-      transition: all 0.2s ease-in-out;
-      position: relative;
-      z-index: 1;
+      clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+      transition: background .15s, color .15s;
     }
+    .btn .lbl { flex: 1; text-align: left; }
+    .btn .lbl::before { content: "./"; opacity: .5; }
+    .btn .idx { font-size: .7rem; opacity: .5; letter-spacing: .05em; }
+    .icon { width: 20px; height: 20px; flex: none; }
 
-    .btn:hover {
-      background: #2EE87A;
-      color: #000;
-      box-shadow: 0 0 25px #2EE87A;
-    }
+    .btn:hover .in, .btn:active .in { background: var(--g); color: #000; animation: jolt .25s steps(2); }
+    .btn:hover .icon, .btn:active .icon { filter: brightness(0); stroke: #000; }
+    @keyframes jolt { 0% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 100% { transform: none; } }
 
-    .icon {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.2s ease, filter 0.2s ease;
-    }
-
-    /* Animazione icona al passaggio */
-    .btn:hover .icon {
-      stroke: #000;
-      transform: scale(1.2);
-      filter: brightness(0);
-    }
+    footer { margin: 14px 0 26px; font-size: .68rem; letter-spacing: .12em; opacity: .65; }
+    .dot { display: inline-block; width: 7px; height: 7px; margin-right: 6px; border-radius: 50%; background: var(--g); box-shadow: 0 0 8px var(--g); animation: blink 1.6s steps(1) infinite; }
 
     /* Effetto glitch */
-    header img { animation: glitch-logo 3.5s infinite steps(1); }
     @keyframes glitch-logo {
-      0%, 86%, 100% { transform: none; filter: drop-shadow(0 0 15px #2EE87A); clip-path: none; }
-      87% { transform: translate(-6px, 2px) skewX(-8deg); filter: drop-shadow(5px 0 0 #ff00c8) drop-shadow(-5px 0 0 #00e5ff); clip-path: inset(10% 0 55% 0); }
-      89% { transform: translate(7px, -3px) skewX(6deg); filter: drop-shadow(-6px 0 0 #ff00c8) drop-shadow(6px 0 0 #00e5ff); clip-path: inset(48% 0 12% 0); }
-      91% { transform: translate(-3px, 1px); filter: drop-shadow(3px 0 0 #ff00c8) drop-shadow(-3px 0 0 #00e5ff); clip-path: none; }
-      93% { transform: translate(4px, 0) skewX(-4deg); filter: drop-shadow(0 0 15px #2EE87A); clip-path: inset(30% 0 35% 0); }
-      95% { transform: none; filter: drop-shadow(-4px 0 0 #ff00c8) drop-shadow(4px 0 0 #00e5ff); clip-path: none; }
+      0%, 86%, 100% { transform: none; filter: drop-shadow(0 0 15px var(--g)); clip-path: none; }
+      87% { transform: translate(-6px, 2px) skewX(-8deg); filter: drop-shadow(5px 0 0 var(--mag)) drop-shadow(-5px 0 0 var(--cy)); clip-path: inset(10% 0 55% 0); }
+      89% { transform: translate(7px, -3px) skewX(6deg); filter: drop-shadow(-6px 0 0 var(--mag)) drop-shadow(6px 0 0 var(--cy)); clip-path: inset(48% 0 12% 0); }
+      91% { transform: translate(-3px, 1px); filter: drop-shadow(3px 0 0 var(--mag)) drop-shadow(-3px 0 0 var(--cy)); clip-path: none; }
+      93% { transform: translate(4px, 0) skewX(-4deg); filter: drop-shadow(0 0 15px var(--g)); clip-path: inset(30% 0 35% 0); }
+      95% { transform: none; filter: drop-shadow(-4px 0 0 var(--mag)) drop-shadow(4px 0 0 var(--cy)); clip-path: none; }
     }
-    h1 { animation: glitch-text 3.5s infinite steps(1); }
     @keyframes glitch-text {
-      0%, 86%, 100% { transform: none; text-shadow: 0 0 20px #2EE87A; }
-      87% { transform: translateX(-5px) skewX(-10deg); text-shadow: 4px 0 #ff00c8, -4px 0 #00e5ff; }
-      90% { transform: translateX(6px) skewX(8deg); text-shadow: -5px 0 #ff00c8, 5px 0 #00e5ff; }
-      93% { transform: translateX(-2px); text-shadow: 2px 0 #ff00c8, -2px 0 #00e5ff; }
+      0%, 86%, 100% { transform: none; text-shadow: 0 0 20px var(--g); }
+      87% { transform: translateX(-5px) skewX(-10deg); text-shadow: 4px 0 var(--mag), -4px 0 var(--cy); }
+      90% { transform: translateX(6px) skewX(8deg); text-shadow: -5px 0 var(--mag), 5px 0 var(--cy); }
+      93% { transform: translateX(-2px); text-shadow: 2px 0 var(--mag), -2px 0 var(--cy); }
     }
     @media (prefers-reduced-motion: reduce) {
-      header img, h1 { animation: none; }
-    }
-
-    footer {
-      margin-top: 50px;
-      font-size: 0.8rem;
-      color: #2EE87A;
-      opacity: 0.6;
-      position: relative;
-      z-index: 1;
+      header img, h1, .cur, .dot, .btn:hover .in { animation: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sfondo Matrix -->
   <canvas id="matrix"></canvas>
 
   <header>
-    <img src="logo.png" alt="Hoodboy Logo">
+    <img src="logo.png" alt="Logo H8db0y">
     <h1>H8db0y</h1>
+    <p class="tag"><span id="typed"></span><span class="cur"></span></p>
   </header>
 
   <main>
-    <a class="btn" href="https://nderja.com" target="_blank">
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="#2EE87A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M2 12h20"/>
-    <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20z"/>
-  </svg>
-  nderja.com
-</a>
-    <a class="btn" href="https://github.com/H8dboy" target="_blank">
-  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="#2EE87A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.8s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.5 5.1 1.9 5.1 1.9a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 3.5 9.5c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/>
-  </svg>
-  GitHub
-</a>
-    <a class="btn" href="https://www.instagram.com/h8db0y" target="_blank">
-      <img src="instagram.svg" alt="Instagram" class="icon"> Instagram
+    <a class="btn" href="https://nderja.com" target="_blank" rel="noopener">
+      <span class="in"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="#2EE87A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <circle cx="12" cy="12" r="10"/> <path d="M2 12h20"/> <path d="M12 2a15 15 0 0 1 0 20a15 15 0 0 1 0-20z"/> </svg><span class="lbl">nderja.com</span><span class="idx">01</span></span>
     </a>
-    <a class="btn" href="https://www.youtube.com/@H8dboy" target="_blank">
-      <img src="youtube.svg" alt="YouTube" class="icon"> YouTube
+    <a class="btn" href="https://github.com/H8dboy" target="_blank" rel="noopener">
+      <span class="in"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="#2EE87A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.8s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.5 5.1 1.9 5.1 1.9a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 3.5 9.5c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/> </svg><span class="lbl">GitHub</span><span class="idx">02</span></span>
     </a>
-    <a class="btn" href="https://open.spotify.com/intl-it/artist/7acUec3JMGpPiOixBEke9o?si=vop0dgVHT9inYQJ0tAkxLQ" target="_blank">
-      <img src="spotify.svg" alt="Spotify" class="icon"> Spotify
+    <a class="btn" href="https://www.instagram.com/h8db0y" target="_blank" rel="noopener">
+      <span class="in"><img src="instagram.svg" alt="Instagram" class="icon"><span class="lbl">Instagram</span><span class="idx">03</span></span>
     </a>
-    <a class="btn" href="https://signal.me/#eu/kpklu39AsMxQ-JVbUvTrmZwADPFqrLsGoD3sxSxy2QRVLAsQjUtIjKCqcGo29mtL" target="_blank">
-      <img src="signal.svg" alt="Signal" class="icon"> Signal
+    <a class="btn" href="https://www.youtube.com/@H8dboy" target="_blank" rel="noopener">
+      <span class="in"><img src="youtube.svg" alt="YouTube" class="icon"><span class="lbl">YouTube</span><span class="idx">04</span></span>
+    </a>
+    <a class="btn" href="https://open.spotify.com/intl-it/artist/7acUec3JMGpPiOixBEke9o?si=vop0dgVHT9inYQJ0tAkxLQ" target="_blank" rel="noopener">
+      <span class="in"><img src="spotify.svg" alt="Spotify" class="icon"><span class="lbl">Spotify</span><span class="idx">05</span></span>
+    </a>
+    <a class="btn" href="https://signal.me/#eu/kpklu39AsMxQ-JVbUvTrmZwADPFqrLsGoD3sxSxy2QRVLAsQjUtIjKCqcGo29mtL" target="_blank" rel="noopener">
+      <span class="in"><img src="signal.svg" alt="Signal" class="icon"><span class="lbl">Signal</span><span class="idx">06</span></span>
     </a>
   </main>
 
-  <footer>
-    © 2026 H8db0y
-  </footer>
+  <footer><span class="dot"></span>SYS ONLINE // © 2026 H8db0y</footer>
 
-  <!-- Script Matrix -->
   <script>
+    // Riga che si scrive da sola, stile terminale
+    const line = "retrofit // reverse engineering";
+    const typed = document.getElementById('typed');
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still) { typed.textContent = line; }
+    else {
+      let n = 0;
+      (function type() {
+        typed.textContent = line.slice(0, n++);
+        if (n <= line.length) setTimeout(type, 45 + Math.random() * 60);
+      })();
+    }
+
+    // Pioggia Matrix
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const binary = "01";
-    const font_size = 14;
-    const columns = canvas.width / font_size;
-
-    const drops = [];
-    for (let x = 0; x < columns; x++) drops[x] = 1;
+    const glyphs = "01アカサタナハマヤラ<>/#$";
+    const size = 14;
+    let drops = [];
+    function fit() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      drops = Array.from({ length: Math.ceil(canvas.width / size) }, () => Math.random() * -40);
+    }
+    fit();
+    window.addEventListener('resize', fit);
 
     function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillStyle = "rgba(7, 11, 8, 0.07)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = "#2EE87A";
-      ctx.font = font_size + "px monospace";
-
+      ctx.font = size + "px monospace";
       for (let i = 0; i < drops.length; i++) {
-        const text = binary[Math.floor(Math.random() * binary.length)];
-        ctx.fillText(text, i * font_size, drops[i] * font_size);
-
-        if (drops[i] * font_size > canvas.height && Math.random() > 0.975)
-          drops[i] = 0;
-
+        ctx.fillText(glyphs[Math.floor(Math.random() * glyphs.length)], i * size, drops[i] * size);
+        if (drops[i] * size > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
       }
     }
-
-    setInterval(draw, 35);
-
-    window.addEventListener("resize", () => {
-      canvas.height = window.innerHeight;
-      canvas.width = window.innerWidth;
-    });
+    if (!still) setInterval(draw, 40);
   </script>
 </body>
 </html>
-
-
