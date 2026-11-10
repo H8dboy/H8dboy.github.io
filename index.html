@@ -75,7 +75,7 @@
     .icon { width: 20px; height: 20px; flex: none; }
 
     .btn:hover .in, .btn:active .in { background: var(--g); color: #000; animation: jolt .25s steps(2); }
-    .btn:hover .icon, .btn:active .icon { filter: brightness(0); stroke: #000; }
+    .btn:hover .icon[stroke], .btn:active .icon[stroke] { stroke: #000; }
     @keyframes jolt { 0% { transform: translateX(-3px); } 50% { transform: translateX(3px); } 100% { transform: none; } }
 
     footer { margin: 14px 0 26px; font-size: .68rem; letter-spacing: .12em; opacity: .65; }
@@ -119,16 +119,16 @@
       <span class="in"><svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 24 24" fill="none" stroke="#2EE87A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.8s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.5 5.1 1.9 5.1 1.9a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 3.5 9.5c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/> </svg><span class="lbl">GitHub</span><span class="idx">02</span></span>
     </a>
     <a class="btn" href="https://www.instagram.com/h8db0y" target="_blank" rel="noopener">
-      <span class="in"><img src="instagram.svg" alt="Instagram" class="icon"><span class="lbl">Instagram</span><span class="idx">03</span></span>
+      <span class="in"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .2 2.5.4.6.2 1 .5 1.5 1s.8.9 1 1.5c.2.5.3 1.3.4 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 2-.4 2.5-.2.6-.5 1-1 1.5s-.9.8-1.5 1c-.5.2-1.3.3-2.5.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.5-1.5-1s-.8-.9-1-1.5c-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-2 .4-2.5.2-.6.5-1 1-1.5s.9-.8 1.5-1c.5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2M12 0C8.7 0 8.3 0 7 .1 5.7.2 4.8.4 4 .7c-.9.3-1.7.7-2.5 1.5C.7 3 .3 3.7 0 4.6.4 5.4.2 6.3.1 7.6 0 8.9 0 9.3 0 12s0 3.1.1 4.4c.1 1.3.3 2.2.6 3 .3.9.7 1.7 1.5 2.5.8.8 1.6 1.2 2.5 1.5.9.3 1.7.5 3 .6 1.3.1 1.7.1 4.4.1s3.1 0 4.4-.1c1.3-.1 2.2-.3 3-.6.9-.3 1.7-.7 2.5-1.5.8-.8 1.2-1.6 1.5-2.5.3-.9.5-1.7.6-3 .1-1.3.1-1.7.1-4.4s0-3.1-.1-4.4c-.1-1.3-.3-2.2-.6-3-.3-.9-.7-1.7-1.5-2.5C20.7.7 19.9.3 19 .0c-.9-.3-1.7-.5-3-.6C15.1 0 14.7 0 12 0zM12 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zm0 10.2a4 4 0 1 1 0-8.2 4 4 0 0 1 0 8.2zm6.4-11.8a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0z"/> </svg><span class="lbl">Instagram</span><span class="idx">03</span></span>
     </a>
     <a class="btn" href="https://www.youtube.com/@H8dboy" target="_blank" rel="noopener">
-      <span class="in"><img src="youtube.svg" alt="YouTube" class="icon"><span class="lbl">YouTube</span><span class="idx">04</span></span>
+      <span class="in"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"> <path d="M23.5 6.2c-.3-1.2-1.2-2.1-2.4-2.4C19 3.4 12 3.4 12 3.4s-7 0-9.1.4c-1.2.3-2.1 1.2-2.4 2.4C0 8.3 0 12 0 12s0 3.7.4 5.8c.3 1.2 1.2 2.1 2.4 2.4 2.1.4 9.1.4 9.1.4s7 0 9.1-.4c1.2-.3 2.1-1.2 2.4-2.4.4-2.1.4-5.8.4-5.8s0-3.7-.4-5.8zM9.6 15.5V8.5L15.8 12l-6.2 3.5z"/> </svg><span class="lbl">YouTube</span><span class="idx">04</span></span>
     </a>
     <a class="btn" href="https://open.spotify.com/intl-it/artist/7acUec3JMGpPiOixBEke9o?si=vop0dgVHT9inYQJ0tAkxLQ" target="_blank" rel="noopener">
-      <span class="in"><img src="spotify.svg" alt="Spotify" class="icon"><span class="lbl">Spotify</span><span class="idx">05</span></span>
+      <span class="in"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0a12 12 0 1 0 0 24A12 12 0 0 0 12 0zm5.5 17.5c-.2.3-.5.4-.8.2-2.2-1.3-5-1.6-8.3-.9-.3.1-.6-.1-.7-.4s.1-.6.4-.7c3.6-.8 6.7-.4 9.2 1.1.3.1.4.5.2.7zm1.1-2.9c-.2.3-.6.4-.9.2-2.6-1.6-6.6-2.1-9.7-1.1-.3.1-.7-.1-.8-.5s.1-.7.5-.8c3.6-1.1 8-0.6 11 1.3.3.2.4.6.2.9zm.1-3.1c-3-1.8-8-2-11-.9-.4.1-.9-.1-1-.6-.1-.4.1-.9.6-1 3.5-1.2 9-1 12.4 1.1.4.2.5.7.2 1.1-.3.3-.8.4-1.2.1z"/> </svg><span class="lbl">Spotify</span><span class="idx">05</span></span>
     </a>
     <a class="btn" href="https://signal.me/#eu/kpklu39AsMxQ-JVbUvTrmZwADPFqrLsGoD3sxSxy2QRVLAsQjUtIjKCqcGo29mtL" target="_blank" rel="noopener">
-      <span class="in"><img src="signal.svg" alt="Signal" class="icon"><span class="lbl">Signal</span><span class="idx">06</span></span>
+      <span class="in"><svg class="icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"> <path d="M12 0C5.4 0 0 5.4 0 12c0 1.4.2 2.7.6 3.9L0 24l8.1-2.1c1.2.4 2.5.6 3.9.6 6.6 0 12-5.4 12-12S18.6 0 12 0zM6.1 10.5c.1-.2.4-.3.6-.2l1.8.7c.2.1.3.4.2.6s-.4.3-.6.2l-1.8-.7c-.2-.1-.3-.4-.2-.6zm2.1 4.8c-.1.2-.4.3-.6.2s-.3-.4-.2-.6l.7-1.8c.1-.2.4-.3.6-.2s.3.4.2.6l-.7 1.8zm7.3.2c-.2.1-.5 0-.6-.2l-.7-1.8c-.1-.2 0-.5.2-.6s.5 0 .6.2l.7 1.8c.1.2 0 .5-.2.6zm2.1-5c-.1.2-.4.3-.6.2l-1.8-.7c-.2-.1-.3-.4-.2-.6s.4-.3.6-.2l1.8.7c.2.1.3.4.2.6z"/> </svg><span class="lbl">Signal</span><span class="idx">06</span></span>
     </a>
   </main>
 
