@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#070B08">
   <title>H8db0y // links</title>
   <style>
-    :root { --g: #2EE87A; --bg: #070B08; --mag: #ff00c8; --cy: #00e5ff; }
+    :root { --g: #2EE87A; --bg: #070B08; --mag: #C9FFE0; --cy: #0E8F47; }
     * { box-sizing: border-box; }
     body {
       margin: 0;
@@ -88,13 +88,18 @@
       89% { transform: translate(7px, -3px) skewX(6deg); filter: drop-shadow(-6px 0 0 var(--mag)) drop-shadow(6px 0 0 var(--cy)); clip-path: inset(48% 0 12% 0); }
       91% { transform: translate(-3px, 1px); filter: drop-shadow(3px 0 0 var(--mag)) drop-shadow(-3px 0 0 var(--cy)); clip-path: none; }
       93% { transform: translate(4px, 0) skewX(-4deg); filter: drop-shadow(0 0 15px var(--g)); clip-path: inset(30% 0 35% 0); }
-      95% { transform: none; filter: drop-shadow(-4px 0 0 var(--mag)) drop-shadow(4px 0 0 var(--cy)); clip-path: none; }
+      95% { opacity: .35; transform: none; filter: drop-shadow(-4px 0 0 var(--mag)) drop-shadow(4px 0 0 var(--cy)); clip-path: none; }
+      96% { opacity: 1; transform: none; filter: drop-shadow(0 0 15px var(--g)); clip-path: none; }
+      97% { opacity: .5; }
+      98% { opacity: 1; }
     }
     @keyframes glitch-text {
       0%, 86%, 100% { transform: none; text-shadow: 0 0 20px var(--g); }
       87% { transform: translateX(-5px) skewX(-10deg); text-shadow: 4px 0 var(--mag), -4px 0 var(--cy); }
       90% { transform: translateX(6px) skewX(8deg); text-shadow: -5px 0 var(--mag), 5px 0 var(--cy); }
       93% { transform: translateX(-2px); text-shadow: 2px 0 var(--mag), -2px 0 var(--cy); }
+      95% { opacity: .35; }
+      96% { opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce) {
       header img, h1, .cur, .dot, .btn:hover .in { animation: none; }
